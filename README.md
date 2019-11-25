@@ -6,11 +6,7 @@ The splash screen image should be 2208x2208 px with a center square of about 120
 
 ### Installation
 
-    $ sudo npm install cordova-splash -g
-
-If you are using an older version of cordova (before 7.x):
-
-    $ sudo npm install cordova-splash@0.12.0 -g
+    $ sudo npm install -g git+https://github.com/evidenceprime/cordova-splash.git#0.9.1
 
 ### Requirements
 
