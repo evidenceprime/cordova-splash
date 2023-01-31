@@ -1,8 +1,8 @@
+require('colors');
 var fs     = require('fs-extra');
 var path   = require('path');
 var xml2js = require('xml2js');
 var ig     = require('imagemagick');
-var colors = require('colors');
 var _      = require('underscore');
 var Q      = require('q');
 var argv   = require('minimist')(process.argv.slice(2));
@@ -24,7 +24,7 @@ settings.OLD_XCODE_PATH = argv['xcode-old'] || false;
 var getPlatforms = function (projectName) {
   var deferred = Q.defer();
   var platforms = [];
-  var xcodeFolder = '/Images.xcassets/LaunchImage.launchimage/';
+  var xcodeFolder = '/Images.xcassets/LaunchStoryboard.imageset/';
 
   if (settings.OLD_XCODE_PATH) {
     xcodeFolder = '/Resources/splash/';
