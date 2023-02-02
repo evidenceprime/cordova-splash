@@ -37,7 +37,9 @@ var getPlatforms = function (projectName) {
       { name: "Default@2x~universal.png", width: 2732, height: 2732 },
       { name: "Default@3x~universal.png", width: 4098, height: 4098 },
     ],
-    extraTask: () => updateContentsJson(projectName),
+    extraTask: function () {
+      return updateContentsJson(projectName);
+    },
   });
   platforms.push({
     name: "android",
