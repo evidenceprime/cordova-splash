@@ -6,7 +6,7 @@ The splash screen image should be 2208x2208 px with a center square of about 120
 
 ### Installation
 
-    $ sudo npm install -g git+https://github.com/evidenceprime/cordova-splash.git#0.9.2
+    $ sudo npm install -g git+https://github.com/evidenceprime/cordova-splash.git#1.0.4
 
 ### Requirements
 
