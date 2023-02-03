@@ -5,7 +5,9 @@ var ig = require("imagemagick");
 var _ = require("underscore");
 var Q = require("q");
 var argv = require("minimist")(process.argv.slice(2));
-var updateContentsJson = require("./ios_cordova_contents_override");
+var iosUpdateContentsJson = require("./ios_cordova_contents_override");
+var androidRemoveCordovaSplash = require("./android_remove_cordova_splash");
+var androidUpdateTheme = require("./android_update_theme");
 var display = require("./display");
 
 /**
@@ -38,7 +40,7 @@ var getPlatforms = function (projectName) {
       { name: "Default@3x~universal.png", width: 4098, height: 4098 },
     ],
     extraTask: function () {
-      return updateContentsJson(projectName);
+      return iosUpdateContentsJson(projectName);
     },
   });
   platforms.push({
@@ -46,6 +48,13 @@ var getPlatforms = function (projectName) {
     isAdded: fs.existsSync("platforms/android"),
     splashPath: "platforms/android/app/src/main/res/",
     splash: [
+      // Default
+      { name: "drawable-ldpi/screen.png", width: 200, height: 320 },
+      { name: "drawable-mdpi/screen.png", width: 320, height: 480 },
+      { name: "drawable-hdpi/screen.png", width: 480, height: 800 },
+      { name: "drawable-xhdpi/screen.png", width: 720, height: 1280 },
+      { name: "drawable-xxhdpi/screen.png", width: 960, height: 1600 },
+      { name: "drawable-xxxhdpi/screen.png", width: 1280, height: 1920 },
       // Landscape
       { name: "drawable-land-ldpi/screen.png", width: 320, height: 200 },
       { name: "drawable-land-mdpi/screen.png", width: 480, height: 320 },
@@ -61,6 +70,9 @@ var getPlatforms = function (projectName) {
       { name: "drawable-port-xxhdpi/screen.png", width: 960, height: 1600 },
       { name: "drawable-port-xxxhdpi/screen.png", width: 1280, height: 1920 },
     ],
+    extraTask: function () {
+      return Q.all([androidRemoveCordovaSplash(), androidUpdateTheme()]);
+    },
   });
   platforms.push({
     name: "windows",
