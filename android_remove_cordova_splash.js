@@ -14,7 +14,7 @@ function removeCordovaSplash() {
       deferred.resolve();
       return;
     }
-    fs.remove(fileToRemove, function (err) {
+    fs.unlink(fileToRemove, function (err) {
       if (err) {
         display.error("could not remove default cordova splash");
         deferred.reject(err);
