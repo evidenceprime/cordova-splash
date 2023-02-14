@@ -49,26 +49,12 @@ var getPlatforms = function (projectName) {
     splashPath: "platforms/android/app/src/main/res/",
     splash: [
       // Default
-      { name: "drawable-ldpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-mdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-hdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-xhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-xxhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-xxxhdpi/screen.png", width: 512, height: 512 },
-      // Landscape
-      { name: "drawable-land-ldpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-land-mdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-land-hdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-land-xhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-land-xxhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-land-xxxhdpi/screen.png", width: 512, height: 512 },
-      // Portrait
-      { name: "drawable-port-ldpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-port-mdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-port-hdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-port-xhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-port-xxhdpi/screen.png", width: 512, height: 512 },
-      { name: "drawable-port-xxxhdpi/screen.png", width: 512, height: 512 },
+      { name: "drawable-ldpi/screen.png", width: 180, height: 180 },
+      { name: "drawable-mdpi/screen.png", width: 240, height: 240 },
+      { name: "drawable-hdpi/screen.png", width: 360, height: 360 },
+      { name: "drawable-xhdpi/screen.png", width: 480, height: 480 },
+      { name: "drawable-xxhdpi/screen.png", width: 720, height: 720 },
+      { name: "drawable-xxxhdpi/screen.png", width: 960, height: 960 },
     ],
     extraTask: function () {
       return Q.all([androidRemoveCordovaSplash(), androidUpdateTheme()]);
