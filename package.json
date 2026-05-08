@@ -1,6 +1,6 @@
 {
   "name": "cordova-splash",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Automatic splash screen cropping for Cordova",
   "main": "index.js",
   "preferGlobal": true,

@@ -3,14 +3,27 @@ var Q = require("q");
 var xml2js = require("xml2js");
 var display = require("./display");
 
-var fileName = "platforms/android/app/src/main/res/values/themes.xml";
+var fileName = "platforms/android/app/src/main/res/values/cdv_themes.xml";
+var fallbackFileName = "platforms/android/app/src/main/res/values/themes.xml";
+
+var filesToTry = [fileName, fallbackFileName];
 
 function updateTheme() {
   var deferred = Q.defer();
 
-  fs.readFile(fileName, function (err, data) {
+  var targetFileName = filesToTry.find(fs.existsSync);
+
+  if (!targetFileName) {
+    display.error("could not find theme file");
+    deferred.reject(new Error("could not find theme file"));
+    return;
+  }
+
+  fs.readFile(targetFileName, function (err, data) {
     if (err) {
-      display.error("could not read theme for splash screen");
+      display.error(
+        "could not read theme for splash screen (" + targetFileName + ")"
+      );
       deferred.reject(err);
       return;
     }
@@ -31,7 +44,7 @@ function updateTheme() {
       );
       var builder = new xml2js.Builder();
       var xml = builder.buildObject(result);
-      fs.writeFile(fileName, xml, "utf-8", function (err) {
+      fs.writeFile(targetFileName, xml, "utf-8", function (err) {
         if (err) {
           display.error("could not write theme for splash screen");
           deferred.reject(err);
